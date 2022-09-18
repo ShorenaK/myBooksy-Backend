@@ -1,6 +1,9 @@
 ///////////////////////////////
 // DEPENDENCIES
 ////////////////////////////////
+const express = require("express");
+const cors = require("cors")
+const morgan = require("morgan")
 
 // initialize .env variables
 require("dotenv").config();
@@ -10,9 +13,8 @@ const { PORT, MONGODB_URI } = process.env;
 const booksController = require('./controllers/books-controller')
 
 // import express
-const express = require("express");
-const cors = require("cors")
-const morgan = require("morgan")
+
+
 
 // create application object
 const app = express();
