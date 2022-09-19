@@ -13,8 +13,8 @@ const Review = mongoose.model('Review', reviewSchema)
 
 module.exports = Review
 
-// Review.create({
-//     recommend: true,
-//     comment: "Very interesting read",
-//     book: "632888ed8351146ef86eeb3e"
-// })
+Review.create({
+    recommend: true,
+    comment: "Stephen King, that is all I need to say. Bravo!",
+    book: "6328883b68aeded80e03e9f5"
+})
