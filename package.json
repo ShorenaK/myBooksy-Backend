@@ -25,5 +25,24 @@
     "mongoose": "^6.6.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
-  }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "name": "mybooksy-backend",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathCoursey/myBooksy-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NathCoursey/myBooksy-Backend/issues"
+  },
+  "homepage": "https://github.com/NathCoursey/myBooksy-Backend#readme"
 }

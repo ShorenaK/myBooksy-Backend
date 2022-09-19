@@ -1,64 +1,47 @@
 const express = require("express");
-const { reset } = require("nodemon");
 const router = express.Router();
 
-const allReviews = [
-    {
-        comment: "This book was amazing!!!",
-        recommend: true,
-        ref: 3
-    },
-    {
-        comment: "Meh",
-        recommend: false,
-        ref: 2
-    },
-    {
-        comment: "Wow, You should definitely read it",
-        recommend: true,
-        ref: 3
-    },
-    {
-        comment: "Very funny",
-        recommend: true,
-        ref: 1
-    },
-    {
-        comment: "Comical book",
-        recommend: true,
-        ref: 1
-    },
-    {
-        comment: "Outstanding",
-        recommend: true,
-        ref: 3
-    },
-]
+const allReviews = require('../models/reviews')
 
-router.get('/', (req, res)=>{
-    res.json(allReviews)
-})
-
-router.get('/:bookId', (req, res)=>{
-    const bookReviews = []
-    for (let i=0; i<allReviews.length; i++){
-        if(allReviews[i].ref == req.params.bookId){
-            bookReviews.push(allReviews[i])
-        }
+router.get('/', async (req, res)=>{
+    try {
+        const reviews = await allReviews.find({})
+        res.json(reviews)
+    } catch (error){
+        console.log(error)
     }
-    res.json(bookReviews)
 })
 
-router.post('/', (req, res)=>{
-    res.json(allReviews.push(req.body))
+router.get('/:bookId', async (req, res)=>{
+    try{
+        const reviews = await allReviews.find({book: req.params.bookId})
+        res.json(reviews)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
-router.put('/:reviewId', (req, res)=>{
-    res.json(allReviews[req.params.reviewId] = req.body)
+router.post('/', async (req, res)=>{
+    try{
+        res.json(await allReviews.create(req.body))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
-router.delete('/:reviewId', (req, res)=>{
-    res.json(allReviews.splice(req.params.reviewId, 1))
+router.put('/:reviewId', async (req, res)=>{
+    try{
+        res.json(await allReviews.findByIdAndUpdate(req.params.reviewId, req.body))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
+router.delete('/:reviewId', async (req, res)=>{
+    try{
+        res.json(await allReviews.findByIdAndRemove(req.params.reviewId))
+    } catch (error) {
+        console.log(error)
+    }
+})
 module.exports = router;
