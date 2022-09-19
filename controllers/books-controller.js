@@ -21,12 +21,20 @@ router.get('/:bookId', async (req, res)=>{
     }
 })
 
-router.post('/', (req, res)=>{
-    res.json(allBooks.push(req.body))
+router.post('/', async (req, res)=>{
+    try{
+        res.json(await allBooks.create(req.body))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 router.put('/:bookId', (req, res)=>{
-    res.json(allBooks[req.params.bookId] = req.body)
+    try{
+        res.json(await allBooks.findByIdAndUpdate(req.params.bookId, req.body))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 router.delete('/:bookId', (req, res)=>{
