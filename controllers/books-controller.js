@@ -1,21 +1,16 @@
 const express = require("express");
-const { reset } = require("nodemon");
 const router = express.Router();
 
-const allBooks = [
-    {
-        title: "Once Upon a time",
-        author: "Famous Person",
-        Genre: "Fiction",
-        Pages: 256,
-        Description: "This book is about stories",
-        Publised: "Today",
-        Likes: 567
-    },
-]
+const allBooks = require('../models/books')
 
-router.get('/', (req, res)=>{
-    res.json(allBooks)
+
+router.get('/', async (req, res)=>{
+    try {
+        const books = await allBooks.find({})
+        res.json(books)
+    } catch (error){
+        console.log(error)
+    }
 })
 
 router.get('/:bookId', (req, res)=>{
