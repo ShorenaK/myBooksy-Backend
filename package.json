@@ -4,17 +4,18 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "mongoose": "^6.6.1",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
   },
   "name": "mybooksy-backend",
   "description": "",
   "version": "1.0.0",
   "main": "server.js",
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NathCoursey/myBooksy-Backend.git"
