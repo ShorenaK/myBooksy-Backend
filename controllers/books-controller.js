@@ -13,8 +13,12 @@ router.get('/', async (req, res)=>{
     }
 })
 
-router.get('/:bookId', (req, res)=>{
-    res.json(allBooks[req.params.bookId])
+router.get('/:bookId', async (req, res)=>{
+    try {
+        res.json(await allBooks.findById(req.params.bookId))
+    } catch (error){
+        console.log(error)
+    }
 })
 
 router.post('/', (req, res)=>{
