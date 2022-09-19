@@ -15,6 +15,6 @@ module.exports = Review
 
 Review.create({
     recommend: true,
-    comment: "This book helped me land my first developer position!",
-    book: "63287ed3ac8f7da1467c5271"
+    comment: "Very interesting read",
+    book: "632888ed8351146ef86eeb3e"
 })
