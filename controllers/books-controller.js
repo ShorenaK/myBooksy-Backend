@@ -38,7 +38,11 @@ router.put('/:bookId', (req, res)=>{
 })
 
 router.delete('/:bookId', (req, res)=>{
-    res.json(allBooks.splice(req.params.bookId, 1))
+    try{
+        res.json(await allBooks.findByIdAndRemove(req.params.bookId))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports = router;
