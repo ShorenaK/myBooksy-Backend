@@ -1,25 +1,35 @@
 ///////////////////////////////
 // DEPENDENCIES
 ////////////////////////////////
+const express = require("express");
+const app = express();
+const cors = require("cors")
+const morgan = require("morgan")
+
 
 // initialize .env variables
 require("dotenv").config();
+require('./config/db.connection');
 
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 const { PORT, MONGODB_URI } = process.env;
+const booksController = require('./controllers/books-controller')
+const reviewsController = require('./controllers/reviews-controllers')
+app.use(express.json())
+
 
 // import express
-const express = require("express");
 
-// create application object
-const app = express();
 
 ///////////////////////////////
 // ROUTES
 ////////////////////////////////
-// create a test route
+
+app.use('/books', booksController)
+app.use('/reviews', reviewsController)
+
 app.get("/", (req, res) => {
-    res.send("hello world");
+    res.send("myBooksy API");
 });
 
 ///////////////////////////////
