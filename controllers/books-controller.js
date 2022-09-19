@@ -1,37 +1,48 @@
 const express = require("express");
-const { reset } = require("nodemon");
 const router = express.Router();
 
-const allBooks = [
-    {
-        title: "Once Upon a time",
-        author: "Famous Person",
-        Genre: "Fiction",
-        Pages: 256,
-        Description: "This book is about stories",
-        Publised: "Today",
-        Likes: 567
-    },
-]
+const allBooks = require('../models/books')
 
-router.get('/', (req, res)=>{
-    res.json(allBooks)
+
+router.get('/', async (req, res)=>{
+    try {
+        const books = await allBooks.find({})
+        res.json(books)
+    } catch (error){
+        console.log(error)
+    }
 })
 
-router.get('/:bookId', (req, res)=>{
-    res.json(allBooks[req.params.bookId])
+router.get('/:bookId', async (req, res)=>{
+    try {
+        res.json(await allBooks.findById(req.params.bookId))
+    } catch (error){
+        console.log(error)
+    }
 })
 
-router.post('/', (req, res)=>{
-    res.json(allBooks.push(req.body))
+router.post('/', async (req, res)=>{
+    try{
+        res.json(await allBooks.create(req.body))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
-router.put('/:bookId', (req, res)=>{
-    res.json(allBooks[req.params.bookId] = req.body)
+router.put('/:bookId', async (req, res)=>{
+    try{
+        res.json(await allBooks.findByIdAndUpdate(req.params.bookId, req.body))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
-router.delete('/:bookId', (req, res)=>{
-    res.json(allBooks.splice(req.params.bookId, 1))
+router.delete('/:bookId', async (req, res)=>{
+    try{
+        res.json(await allBooks.findByIdAndRemove(req.params.bookId))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports = router;
