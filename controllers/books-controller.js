@@ -29,7 +29,7 @@ router.post('/', async (req, res)=>{
     }
 })
 
-router.put('/:bookId', (req, res)=>{
+router.put('/:bookId', async (req, res)=>{
     try{
         res.json(await allBooks.findByIdAndUpdate(req.params.bookId, req.body))
     } catch (error) {
@@ -37,7 +37,7 @@ router.put('/:bookId', (req, res)=>{
     }
 })
 
-router.delete('/:bookId', (req, res)=>{
+router.delete('/:bookId', async (req, res)=>{
     try{
         res.json(await allBooks.findByIdAndRemove(req.params.bookId))
     } catch (error) {
