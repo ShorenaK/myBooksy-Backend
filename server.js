@@ -15,6 +15,7 @@ require('./config/db.connection');
 const { PORT, MONGODB_URI } = process.env;
 const booksController = require('./controllers/books-controller')
 const reviewsController = require('./controllers/reviews-controllers')
+const userController = require('./controllers/auth-controller')
 app.use(express.json())
 
 
@@ -27,6 +28,7 @@ app.use(express.json())
 
 app.use('/books', booksController)
 app.use('/reviews', reviewsController)
+app.use('/auth', userController)
 
 app.get("/", (req, res) => {
     res.send("myBooksy API");
