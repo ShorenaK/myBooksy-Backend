@@ -7,7 +7,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   },
@@ -15,7 +15,6 @@
   "description": "",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NathCoursey/myBooksy-Backend.git"
