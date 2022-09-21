@@ -11,6 +11,8 @@ const morgan = require("morgan")
 require("dotenv").config();
 require('./config/db.connection');
 
+app.use(cors()); 
+app.use(morgan("dev"));
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 const { PORT, MONGODB_URI } = process.env;
 const booksController = require('./controllers/books-controller')
