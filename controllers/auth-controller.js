@@ -43,10 +43,9 @@ router.post("/register", async (req, res) => {
   
   router.post("/login", async (req, res) => {
     try {
-      const logggingUser = req.body.username;
-      const foundUser = await User.findOne({ username: logggingUser });
-      const token = await createUserToken(req, foundUser);
-      console.log("created token:", token);
+      const loggingUser = req.body.username;
+      const foundUser = await User.findOne({ username: loggingUser });
+      const token = createUserToken(req, foundUser);
       res.status(200).json({ user: foundUser, isLoggedIn: true, token });
     } catch (err) {
       res.status(400).json({ error: err.message });
