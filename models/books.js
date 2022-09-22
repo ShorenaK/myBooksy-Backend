@@ -12,7 +12,7 @@ const bookSchema = new mongoose.Schema({
     description: {type: String},
     publishDate: {type: Date, required: true},
     link: {type: String},
-    likes: {type: Number, default: 0}
+    likes: [{type: mongoose.Types.ObjectId, ref: "Book"}]
 })
 
 const Book = mongoose.model('Book', bookSchema)
