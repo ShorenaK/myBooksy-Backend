@@ -3,6 +3,7 @@ const router = express.Router();
 
 const allReviews = require('../models/reviews')
 
+
 router.get('/', async (req, res)=>{
     try {
         const reviews = await allReviews.find({})
@@ -15,14 +16,16 @@ router.get('/', async (req, res)=>{
 router.get('/:bookId', async (req, res)=>{
     try{
         const reviews = await allReviews.find({book: req.params.bookId})
+        console.log(reviews)
         res.json(reviews)
     } catch (error) {
         console.log(error)
     }
 })
-router.get('/:reviewId', async (req, res)=>{
+router.get('/review/:reviewId', async (req, res)=>{
     try {
         const review = await allReviews.findById(req.params.reviewId)
+        console.log(review)
         res.json(review)
     } catch (error){
         console.log(error)
