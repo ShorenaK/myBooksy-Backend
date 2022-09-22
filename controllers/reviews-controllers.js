@@ -37,7 +37,7 @@ router.post('/', async (req, res)=>{
     }
 })
 
-router.put('review/:reviewId', async (req, res)=>{
+router.put('/review/:reviewId', async (req, res)=>{
     try{
         res.json(await allReviews.findByIdAndUpdate(req.params.reviewId, req.body))
     } catch (error) {
