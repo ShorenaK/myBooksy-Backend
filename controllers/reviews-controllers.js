@@ -22,7 +22,8 @@ router.get('/:bookId', async (req, res)=>{
 })
 router.get('/:reviewId', async (req, res)=>{
     try {
-        res.json(await allReviews.findById(req.params.reviewId))
+        const review = await allReviews.findById(req.params.reviewId)
+        res.json(review)
     } catch (error){
         console.log(error)
     }
