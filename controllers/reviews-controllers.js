@@ -20,7 +20,13 @@ router.get('/:bookId', async (req, res)=>{
         console.log(error)
     }
 })
-
+router.get('/:reviewId', async (req, res)=>{
+    try {
+        res.json(await allReviews.findById(req.params.reviewId))
+    } catch (error){
+        console.log(error)
+    }
+})
 router.post('/', async (req, res)=>{
     try{
         res.json(await allReviews.create(req.body))
