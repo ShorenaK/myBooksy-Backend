@@ -12,7 +12,7 @@ You can also post your own book and add you affiliate link for extra exposure wi
 ![alt text](https://i.imgur.com/5eBtxUM.png)
 
 ## Go to app
-[CLICK HERE!](https://6336fb495211cf00744988d7--cheery-twilight-75bceb.netlify.app/)
+[CLICK HERE!](https://mybooksy.netlify.app/)
 
 ## Frontend Repository
 https://github.com/NathCoursey/mybooksy-frontend
